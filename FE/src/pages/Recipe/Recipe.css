@@ -1,0 +1,33 @@
+.recipe__breakout {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 300px), 2fr) minmax(min(100%, 200px), 1fr);
+  gap: 1rem;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.recipe__image-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+
+  @media (max-width: 600px) {
+    height: auto;
+  }
+}
+
+.recipe__image {
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  z-index: -1;
+
+  @media (max-width: 600px) {
+    position: relative;
+    z-index: 1;
+  }
+}

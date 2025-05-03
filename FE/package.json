@@ -7,14 +7,18 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "npm run build && vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.75.0",
+    "axios": "^1.9.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router": "^7.5.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
+    "@types/node": "^22.15.3",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
     "@vitejs/plugin-react": "^4.3.4",

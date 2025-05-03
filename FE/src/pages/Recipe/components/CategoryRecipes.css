@@ -1,0 +1,10 @@
+.recipe__category-recipes {
+  height: fit-content;
+  padding: 0 30px 30px;
+  border-radius: 10px;
+  background-color: var(--clr-primary-500);
+}
+
+.recipe__category-recipes-list {
+  padding-left: 12px;
+}

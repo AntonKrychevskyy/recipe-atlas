@@ -1,0 +1,23 @@
+.recipe-ingredients {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.recipe-ingredients__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.recipe-ingredients__row {
+  display: contents;
+}
+
+.recipe-ingredients__row:nth-child(even) dt,
+.recipe-ingredients__row:nth-child(even) dd {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.recipe-ingredients__row:hover dt,
+.recipe-ingredients__row:hover dd {
+  background-color: rgba(255, 255, 255, 0.2);
+}

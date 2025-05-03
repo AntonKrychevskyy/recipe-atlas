@@ -1,0 +1,8 @@
+.recipe-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.recipe-header__country {
+  margin: 0.5rem 0 0;
+}
