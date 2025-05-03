@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "install": "npm --prefix BE install && npm --prefix FE install",
-    "start": "concurrently \"npm --prefix BE start\" \"npm --prefix FE run preview\"",
-    "dev": "concurrently \"npm --prefix BE run dev\" \"npm --prefix FE run dev"
+    "install:all": "npm --prefix BE install && npm --prefix FE install",
+    "dev": "concurrently \"npm --prefix BE run start:dev\" \"npm --prefix FE run dev\"",
+    "start": "concurrently \"npm --prefix BE run start:prod\" \"npm --prefix FE run preview\""
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
