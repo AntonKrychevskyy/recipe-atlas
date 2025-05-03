@@ -9,5 +9,8 @@ export default defineConfig(({ mode }) => {
     server: {
       port: env.PORT ? parseInt(env.PORT) : 4000,
     },
+    preview: {
+      port: env.PORT ? parseInt(env.PORT) : 4000,
+    },
   };
 });
