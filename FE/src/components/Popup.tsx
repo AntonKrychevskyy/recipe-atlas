@@ -3,7 +3,7 @@ import { useEffect, useMemo, useRef, type FC } from 'react';
 import { IPopup } from '../types';
 import './Popup.css';
 import { NotificationTypeSign } from '../constants';
-import { onTransitionEnd } from '../utils';
+import { onClose, onTransitionEnd } from '../utils';
 
 interface Props extends Partial<IPopup> {
   closePopup: () => void;
@@ -26,7 +26,23 @@ export const Popup: FC<Props> = ({
   useEffect(() => {
     if (!id || !dialogRef.current) return;
 
-    return onTransitionEnd(dialogRef.current, closePopup, 1000);
+    const ua = navigator.userAgent;
+    const isAllowDiscreteSupported =
+      !ua.includes('Firefox') &&
+      !ua.includes('MSIE') &&
+      !ua.includes('Trident') &&
+      !ua.includes('rv:11') &&
+      CSS.supports('transition-behavior', 'allow-discrete');
+
+    let cleanUp;
+
+    if (isAllowDiscreteSupported) {
+      cleanUp = onTransitionEnd(dialogRef.current, closePopup, 1000);
+    } else {
+      cleanUp = onClose(dialogRef.current, closePopup);
+    }
+
+    return cleanUp;
   }, [dialogRef, id, closePopup]);
 
   return (
@@ -50,7 +66,11 @@ export const Popup: FC<Props> = ({
               {type!.slice(1).toLowerCase()}: {summary}
             </p>
             {message && message.map((p, i) => <p key={i}>{p}</p>)}
-            {trace && <code className="popup__trace">{trace}</code>}
+            {trace && (
+              <pre className="popup__trace">
+                <code>{trace}</code>
+              </pre>
+            )}
           </section>
         </>
       )}

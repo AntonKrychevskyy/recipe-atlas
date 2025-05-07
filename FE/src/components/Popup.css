@@ -2,6 +2,9 @@
   margin: auto;
   width: clamp(300px, calc(70vw - 20px), 700px);
   min-width: 300px;
+  max-height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   border-radius: 10px;
 
   background-color: var(--clr-primary-400);
@@ -70,4 +73,14 @@
 .popup__summary {
   font-style: italic;
   font-weight: 600;
+}
+
+.popup__trace {
+  max-width: 100%;
+  padding: 5px 10px;
+  margin-top: 10px;
+  overflow: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  background-color: var(--clr-primary-600);
 }
