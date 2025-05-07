@@ -16,7 +16,7 @@ export const Spinner: FC<Props> = ({ className, size = 50 }) => (
           cy="25"
           r="20"
           fill="none"
-          stroke-width="5"
+          strokeWidth="5"
           stroke="white"
         ></circle>
       </svg>
