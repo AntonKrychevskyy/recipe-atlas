@@ -1,0 +1,27 @@
+.toaster {
+  position: fixed;
+  height: auto;
+  width: 0px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.toaster > .toast {
+  z-index: 4;
+}
+
+.toaster > .toast:nth-child(2) {
+  z-index: 3;
+}
+
+.toaster > .toast:nth-child(3) {
+  z-index: 2;
+}
+
+.toaster > .toast:nth-child(4) {
+  z-index: 1;
+}
+
+.toaster > .toast:nth-child(5) {
+  z-index: 0;
+}

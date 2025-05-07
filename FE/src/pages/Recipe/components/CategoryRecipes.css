@@ -1,12 +1,10 @@
 .recipe__category-recipes {
+  position: relative;
   height: fit-content;
   padding: 0 30px 30px;
   border-radius: 10px;
   background-color: var(--clr-primary-500);
-
-  @media (min-width: 600px) {
-    min-height: 330px;
-  }
+  min-height: 100%;
 }
 
 .recipe__category-recipes-list {

@@ -1,6 +1,9 @@
 import { type FC } from 'react';
 import { Link } from 'react-router';
+
 import { useRecipes } from '../../../api';
+import { useToastOnError } from '../../../hooks';
+import { Spinner } from '../../../components';
 
 import './CategoryRecipes.css';
 
@@ -10,6 +13,7 @@ interface Props {
 
 export const CategoryRecipes: FC<Props> = ({ category }) => {
   const { recipes, error, isLoading, isError } = useRecipes({ c: category });
+  useToastOnError(`${category} recipes (most popular)`, isError, error);
 
   return (
     <aside className="recipe__category-recipes">
@@ -25,7 +29,7 @@ export const CategoryRecipes: FC<Props> = ({ category }) => {
           ))}
         </ul>
       ) : (
-        [isLoading && <p>Loading…</p>, isError && <p>Error: {error?.message}</p>]
+        [isLoading && <Spinner />, isError && <p>Error: {error?.message}</p>]
       )}
     </aside>
   );

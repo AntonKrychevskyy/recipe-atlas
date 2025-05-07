@@ -1,4 +1,5 @@
 import { Outlet, Link } from 'react-router';
+import { PopupContainer, Toaster } from './components';
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
       <footer className="frame-grid footer">
         <div className="breakout">ⓒ 2025</div>
       </footer>
+      <Toaster />
+      <PopupContainer />
     </>
   );
 }

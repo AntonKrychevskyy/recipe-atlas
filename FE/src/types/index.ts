@@ -1,3 +1,5 @@
+import { NotificationType, PopupActionType, ToastActionType } from '../constants';
+
 export type ValueOf<T> = T[keyof T];
 
 export interface RecipeSearchParams {
@@ -67,4 +69,60 @@ export interface RecipeDetails {
   strImageSource: string | null;
   strCreativeCommonsConfirmed: unknown;
   dateModified: unknown;
+}
+
+export interface NotificationConfig {
+  type: ValueOf<typeof NotificationType>;
+  title: string;
+  summary: string;
+  details: string | string[];
+  trace?: string;
+}
+
+export interface ToastConfig extends NotificationConfig {
+  duration?: number;
+}
+
+export interface IToast extends ToastConfig {
+  id: number;
+}
+
+export interface AddToastAction {
+  type: typeof ToastActionType.add;
+  payload: IToast;
+}
+
+export interface RemoveToastAction {
+  type: typeof ToastActionType.remove;
+  payload: number;
+}
+
+export type ToasterAction = AddToastAction | RemoveToastAction;
+
+export interface IToasterContext {
+  toasts: IToast[];
+  addToast: (toastConfig: ToastConfig) => void;
+  removeToast: (id: number) => void;
+}
+
+export interface IPopup extends NotificationConfig {
+  id: number;
+}
+
+export interface AddPopupAction {
+  type: typeof PopupActionType.add;
+  payload: IPopup;
+}
+
+export interface ClosePopupAction {
+  type: typeof PopupActionType.close;
+  payload: number;
+}
+
+export type PopupAction = AddPopupAction | ClosePopupAction;
+
+export interface IPopupContext {
+  popups: IPopup[];
+  addPopup: (popupConfig: NotificationConfig) => void;
+  closePopup: (id: number) => void;
 }

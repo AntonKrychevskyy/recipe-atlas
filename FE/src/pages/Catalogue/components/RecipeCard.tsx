@@ -15,7 +15,14 @@ export const RecipeCard: FC<Props> = ({ recipe }) => (
   <section className="recipe-card">
     <Link to={`/${recipe.idMeal}`} className="recipe-card__link">
       <Image src={recipe.strMealThumb} className="recipe-card__image" />
-      <Flag area={recipe.strArea} size={24} style="flat" className="recipe-card__flag" />
+      {recipe.strArea && (
+        <Flag
+          area={recipe.strArea}
+          size={24}
+          style="flat"
+          className="recipe-card__flag"
+        />
+      )}
     </Link>
     <h3 className="recipe-card__title">
       <Link to={`/${recipe.idMeal}`} className="recipe-card__link">

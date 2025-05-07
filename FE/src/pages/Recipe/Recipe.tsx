@@ -2,7 +2,8 @@ import { type FC } from 'react';
 import { useParams } from 'react-router';
 
 import { useRecipe } from '../../api';
-import { Image } from '../../components';
+import { useToastOnError } from '../../hooks';
+import { Image, Spinner } from '../../components';
 import {
   RecipeHeader,
   RecipeInstructions,
@@ -14,7 +15,8 @@ import './Recipe.css';
 
 export const Recipe: FC = () => {
   const { id } = useParams();
-  const { recipe, isLoading, isError } = useRecipe(id);
+  const { recipe, error, isLoading, isError } = useRecipe(id);
+  useToastOnError(`Recipe #${id}`, isError, error);
 
   return (
     <article className="recipe frame-grid">
@@ -37,6 +39,8 @@ export const Recipe: FC = () => {
             <RecipeIngredients recipe={recipe} />
           </section>
         </>
+      ) : isLoading ? (
+        <Spinner />
       ) : null}
     </article>
   );

@@ -1,2 +1,3 @@
-export { Catalogue } from './Catalogue';
-export { Recipe } from './Recipe';
+export * from './Catalogue';
+export * from './Recipe';
+export * from './NotFound';
